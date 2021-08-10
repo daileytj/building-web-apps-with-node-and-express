@@ -3,7 +3,7 @@ const chalk = require('chalk'); // terminal string styling
 const debug = require('debug')('app'); // debugging utility - run 'DEBUG=* node app.js' in terminal to run in debug mode with all message || 'DEBUG=app node app.js' to debug app.js file
 const morgan = require('morgan'); // HTTP request logger middleware for node.js
 const path = require('path');
-
+const sessionsRouter = require('./src/routers/sessionsRouter');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
@@ -12,6 +12,9 @@ app.use(express.static(path.join(__dirname, '/public/'))); // middleware that wi
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
+
+// if a request to /sessions occurs, use the sessionsRouter
+app.use('/sessions', sessionsRouter)
 
 // req = request, res = response
 app.get('/', (req, res) => {
