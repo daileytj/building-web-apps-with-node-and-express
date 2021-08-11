@@ -7,7 +7,10 @@
     "start": "nodemon app.js",
     "debug": "DEBUG=app nodemon app.js",
     "debug:all": "DEBUG=* nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:local-db": "brew services start mongodb-community@5.0",
+    "stop:local-db": "brew services stop mongodb-community@5.0",
+    "verify:local-db": "brew services list"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
     "debug": "^4.3.2",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "mongodb": "^4.1.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.12"
   },

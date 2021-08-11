@@ -4,6 +4,7 @@ const debug = require('debug')('app'); // debugging utility - run 'DEBUG=* node 
 const morgan = require('morgan'); // HTTP request logger middleware for node.js
 const path = require('path');
 const sessionsRouter = require('./src/routers/sessionsRouter');
+const adminRouter = require('./src/routers/adminRouter');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
@@ -15,6 +16,7 @@ app.set('view engine', 'ejs');
 
 // if a request to /sessions occurs, use the sessionsRouter
 app.use('/sessions', sessionsRouter)
+app.use('/admin', adminRouter);
 
 // req = request, res = response
 app.get('/', (req, res) => {
